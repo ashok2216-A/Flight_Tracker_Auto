@@ -137,7 +137,8 @@ with st.sidebar:
         st.write('The current color is', "****:red[Hot]****")
     else: None
 while True:
-    time.sleep(10)
+    inp = int(10)
+    time.sleep(inp)
 
 refresher(5)
 flight_tracking(flight_view_level=view, country=cou,
