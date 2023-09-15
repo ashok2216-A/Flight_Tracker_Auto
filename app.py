@@ -140,8 +140,7 @@ count = st_autorefresh(interval=10000, limit=1000, key="fizzbuzzcounter")
 if count == 0:
     st.write("Auto Updating Map every 10 Seconds")
 else:
-    count = count + 9
     st.write("Auto Updating Map every 10 Seconds")
-    st.write(f"After: :red[{count}] Seconds")
+    st.write(f"After: :red[{count + 9}] Seconds")
 flight_tracking(flight_view_level=view, country=cou,
             local_time_zone=time, airport=air_port, flight_info=info, color=clr)
