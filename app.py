@@ -136,11 +136,8 @@ with st.sidebar:
     elif clr == 'hot':
         st.write('The current color is', "****:red[Hot]****")
     else: None
-def refresher(seconds):
-    while True:
-        with open('dummy.py', 'w') as f:
-            f.write(f'# {randint(0, 10000)}')
-        time.sleep(seconds)
+while True:
+    time.sleep(10)
 
 refresher(5)
 flight_tracking(flight_view_level=view, country=cou,
