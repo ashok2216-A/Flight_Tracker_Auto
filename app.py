@@ -18,7 +18,7 @@ warnings.filterwarnings('ignore')
 from plotly.graph_objs import Marker
 import plotly.express as px
 import streamlit as st
-
+from streamlit_autorefresh import st_autorefresh
 
 
 def flight_tracking(flight_view_level, country, local_time_zone, flight_info, airport, color):
@@ -136,9 +136,24 @@ with st.sidebar:
     elif clr == 'hot':
         st.write('The current color is', "****:red[Hot]****")
     else: None
-while True:
-    inp = int(10)
-    time.sleep(inp)
+
+
+# Run the autorefresh about every 2000 milliseconds (2 seconds) and stop
+# after it's been refreshed 100 times.
+count = st_autorefresh(interval=8000, limit=100, key="fizzbuzzcounter")
+
+# The function returns a counter for number of refreshes. This allows the
+# ability to make special requests at different intervals based on the count
+if count == 0:
+    st.write("Count is zero")
+elif count % 3 == 0 and count % 5 == 0:
+    st.write("FizzBuzz")
+elif count % 3 == 0:
+    st.write("Fizz")
+elif count % 5 == 0:
+    st.write("Buzz")
+else:
+    st.write(f"Count: {count}")
 
 refresher(5)
 flight_tracking(flight_view_level=view, country=cou,
