@@ -136,18 +136,10 @@ with st.sidebar:
     elif clr == 'hot':
         st.write('The current color is', "****:red[Hot]****")
     else: None
-
-
-# Run the autorefresh about every 2000 milliseconds (2 seconds) and stop
-# after it's been refreshed 100 times.
-count = st_autorefresh(interval=8000, limit=800, key="fizzbuzzcounter")
-
-# The function returns a counter for number of refreshes. This allows the
-# ability to make special requests at different intervals based on the count
+count = st_autorefresh(interval=10000, limit=1000, key="fizzbuzzcounter")
 if count == 0:
     st.write("Count is zero")
 else:
     st.write(f"Count: {count}")
-
 flight_tracking(flight_view_level=view, country=cou,
             local_time_zone=time, airport=air_port, flight_info=info, color=clr)
