@@ -1,5 +1,8 @@
+import os
 import requests
 import json
+from random import randint
+import time
 import pandas as pd
 import geopandas as gpd
 import contextily as ctx
@@ -132,5 +135,14 @@ with st.sidebar:
     elif clr == 'hot':
         st.write('The current color is', "****:red[Hot]****")
     else: None
+def refresher(seconds):
+    while True:
+        mainDir = os.path.dirname(__file__)
+        filePath = os.path.join(mainDir, 'dummy.py')
+        with open(filePath, 'w') as f:
+            f.write(f'# {randint(0, 10000)}')
+        time.sleep(seconds)
+
+refresher(5)
 flight_tracking(flight_view_level=view, country=cou,
             local_time_zone=time, airport=air_port, flight_info=info, color=clr)
